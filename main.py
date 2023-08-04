@@ -15,7 +15,13 @@ def index():
 def get_yahoo_data():
     title, datas = get_one_page_data()
     # print(datas)
-    return render_template("Yahoo.html", title=title, datas=datas)
+    price = [i[2] for i in datas]
+    return render_template("Yahoo.html", title=title, datas=datas, price=price)
+
+
+@app.route("/yahoo_charts")
+def get_yahoo_charts():
+    return render_template("Yahoo_charts.html")
 
 
 if __name__ == "__main__":
